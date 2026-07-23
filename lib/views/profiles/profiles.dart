@@ -82,35 +82,39 @@ class _ProfilesViewState extends State<ProfilesView> {
   }
 
   List<Widget> _buildActions(List<Profile> profiles) {
-    return profiles.isNotEmpty
-        ? [
-            IconButton(
-              onPressed: () {
-                _updateProfiles(profiles);
+    return [
+      IconButton(
+        onPressed: _handleShowAddExtendPage,
+        icon: const Icon(Icons.add),
+        tooltip: context.appLocalizations.addProfile,
+      ),
+      if (profiles.isNotEmpty) ...[
+        IconButton(
+          onPressed: () {
+            showSheet(
+              context: context,
+              builder: (_) {
+                return ReorderableProfilesSheet(profiles: profiles);
               },
-              icon: const Icon(Icons.sync),
-            ),
-            IconButton(
-              onPressed: () {
-                showSheet(
-                  context: context,
-                  builder: (_) {
-                    return ReorderableProfilesSheet(profiles: profiles);
-                  },
-                );
-              },
-              icon: const Icon(Icons.sort),
-              iconSize: 26,
-            ),
-          ]
-        : [];
+            );
+          },
+          icon: const Icon(Icons.sort),
+          iconSize: 26,
+        ),
+      ],
+    ];
   }
 
   Widget _buildFAB() {
     return CommonFloatingActionButton(
-      onPressed: _handleShowAddExtendPage,
-      icon: const Icon(Icons.add),
-      label: context.appLocalizations.addProfile,
+      onPressed: _isUpdating ? null : () {
+        final state = ref.read(profilesStateProvider);
+        if (state.profiles.isNotEmpty) {
+          _updateProfiles(state.profiles);
+        }
+      },
+      icon: const Icon(Icons.sync),
+      label: context.appLocalizations.sync,
     );
   }
 

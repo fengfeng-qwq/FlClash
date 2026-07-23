@@ -128,12 +128,6 @@ brew install --cask flclash
            dart setup.dart macos
            ```
 
-## Star
+## 个性化修改
 
-支持开发者的最简单方式是点击页面顶部的星标（⭐）。
-
-<p style="text-align: center;">
-    <a href="https://api.star-history.com/svg?repos=chen08209/FlClash&Date">
-        <img alt="start" width=50% src="https://api.star-history.com/svg?repos=chen08209/FlClash&Date"/>
-    </a>
-</p>
+- **配置页面按钮布局**: 配置页面中"刷新"和"添加配置"按钮的位置已互换。"添加配置"按钮现在位于顶部（操作栏中），而"刷新/同步"按钮位于底部（作为浮动操作按钮）。

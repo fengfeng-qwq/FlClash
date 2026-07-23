@@ -128,12 +128,6 @@ brew install --cask flclash
            dart setup.dart macos
            ```
 
-## Star
+## Custom Modifications
 
-The easiest way to support developers is to click on the star (⭐) at the top of the page.
-
-<p style="text-align: center;">
-    <a href="https://api.star-history.com/svg?repos=chen08209/FlClash&Date">
-        <img alt="start" width=50% src="https://api.star-history.com/svg?repos=chen08209/FlClash&Date"/>
-    </a>
-</p>
+- **Config Page Button Layout**: The positions of the "Refresh" and "Add Config" buttons in the configuration page have been swapped. The "Add Config" button is now at the top (in the actions bar), and the "Refresh/Sync" button is at the bottom (as a floating action button).
