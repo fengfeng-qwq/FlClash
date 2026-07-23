@@ -42,6 +42,11 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: FlClash-Windows-Build
-          # setup.dart 会将编译产物输出到 dist 目录
-          path: ./dist/*
+          # 同时搜索 dist 目录和 Flutter 默认的 build 目录
+          path: |
+            ./dist/*
+            build/windows/x64/runner/Release/*.exe
+            build/windows/x64/runner/Release/*.dll
+            build/windows/x64/runner/Release/data/
           overwrite: true
+          if-no-files-found: error
