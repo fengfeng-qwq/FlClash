@@ -1,0 +1,5 @@
+Triggering CI rerun
+
+Timestamp: 2026-07-23T18:53:48Z
+
+This file was added to trigger CI rerun after fixing profiles.dart.
