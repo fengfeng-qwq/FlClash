@@ -105,14 +105,17 @@ class _ProfilesViewState extends State<ProfilesView> {
     ];
   }
 
-  Widget _buildFAB() {
+  // Modified: accept WidgetRef so we can use Riverpod ref inside State without changing base class
+  Widget _buildFAB(WidgetRef ref) {
     return CommonFloatingActionButton(
-      onPressed: _isUpdating ? null : () {
-        final state = ref.read(profilesStateProvider);
-        if (state.profiles.isNotEmpty) {
-          _updateProfiles(state.profiles);
-        }
-      },
+      onPressed: _isUpdating
+          ? null
+          : () {
+              final state = ref.read(profilesStateProvider);
+              if (state.profiles.isNotEmpty) {
+                _updateProfiles(state.profiles);
+              }
+            },
       icon: const Icon(Icons.sync),
       label: context.appLocalizations.sync,
     );
@@ -129,7 +132,7 @@ class _ProfilesViewState extends State<ProfilesView> {
         return CommonScaffold(
           isLoading: isLoading,
           title: appLocalizations.profiles,
-          floatingActionButton: _buildFAB(),
+          floatingActionButton: _buildFAB(ref),
           actions: _buildActions(state.profiles),
           body: state.profiles.isEmpty
               ? NullStatus(
@@ -158,8 +161,8 @@ class _ProfilesViewState extends State<ProfilesView> {
                               groupValue: state.currentProfileId,
                               onChanged: (profileId) {
                                 ref
-                                        .read(currentProfileIdProvider.notifier)
-                                        .value =
+                                    .read(currentProfileIdProvider.notifier)
+                                    .value =
                                     profileId;
                               },
                             ),
