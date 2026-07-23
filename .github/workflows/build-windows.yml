@@ -1,0 +1,47 @@
+name: Build Windows EXE/ZIP (Cloud)
+
+on:
+  workflow_dispatch: # 允许在网页端手动触发
+
+jobs:
+  build-windows:
+    runs-on: windows-latest # 使用 GitHub 提供的 Windows 虚拟机
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive # 极其重要：拉取 Go 核心子模块，否则必败
+
+      - name: Enable git long paths
+        # Windows 下路径过长会导致编译失败，必须开启此选项
+        run: git config --global core.longpaths true
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22' # 编译 mihomo 核心所需
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Install Dependencies
+        run: |
+          flutter --version
+          flutter pub get
+
+      - name: Build Windows Package
+        run: |
+          # 运行官方构建脚本，它会自动编译 Go 核心并打包 Windows exe/zip
+          dart setup.dart windows -v
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: FlClash-Windows-Build
+          # setup.dart 会将编译产物输出到 dist 目录
+          path: ./dist/*
+          overwrite: true
