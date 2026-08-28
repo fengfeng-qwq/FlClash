@@ -37,7 +37,7 @@ jobs:
       - name: Build Windows Package
         run: |
           # 运行官方构建脚本，它会自动编译 Go 核心并打包 Windows exe/zip
-          dart setup.dart windows -v
+          dart setup.dart windows --env stable -v
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4

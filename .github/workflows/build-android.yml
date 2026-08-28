@@ -52,7 +52,7 @@ jobs:
           ANDROID_NDK: ${{ steps.setup-ndk.outputs.ndk-path }}
         run: |
           # 运行官方构建脚本，它会自动处理 Go 核心编译和 Flutter 打包
-          dart setup.dart android -v
+          dart setup.dart android --env stable -v
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
