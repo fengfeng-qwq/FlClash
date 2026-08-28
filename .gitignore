@@ -1,364 +1,77 @@
-```
-# Build outputs
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
 /build/
 /dist/
 
-# Dependencies
-/pubspec.lock
-
-# Logs
-*.log
-
-# Coverage
-/coverage/
-
-# VSCode
-.vscode/
-
-# Temporary files
-*.tmp
-*.swp
-
-# Environment
-.env
-.env.local
-*.env.*
-
-# Dart specific
-.dart_tool/
-.packages
-
-# IDE
-.idea/
-*.iml
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Testing
-/test/.tmp
-
-# CI
-.github/
-.gitlab/
-
-# Distribution packages
-*.tar.gz
-*.zip
-*.jar
-*.war
-*.aar
-
-# Generated code
-/lib/generated/
-
-# Profile data
-*.profile
-
-# Crash logs
-*.dmp
-
-# Sensitive files
-/config/secrets.*
-/credentials.json
-/private-key.pem
-
-# Cache directories
-/.cache/
-/cache/
-
-# Lock files
-*.lock
-
-# Output of command line tools
-/output/
-/results/
-
-# Temporary build artifacts
-/tmp/
-/temp/
-
-# Database files
-*.db
-*.sqlite
-
-# Certificate files
-*.crt
-*.key
-*.pem
-
-# Backup files
-*.bak
-*.backup
-
-# Compressed archives
-*.gz
-*.tar
-*.tgz
-*.bz2
-*.xz
-*.7z
-*.rar
-*.zst
-
-# Image optimization outputs (if generated)
-*.min.png
-*.min.jpg
-*.opt.gif
-
-# Documentation builds
-/docs/_build/
-/doc/_build/
-
-# Node related (if Flutter project uses web)
-/node_modules/
-/npm-debug.log*
-
-# Python related (if using python scripts)
-/__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.pytest_cache/
-.coverage
-htmlcov/
-.venv/
-venv/
-
-# Java related (if using plugins)
-/target/
-*.class
-*.jar
-*.war
-.gradle/
-!gradle/wrapper/gradle-wrapper.jar
-
-# C/C++ related (if using native code)
-*.o
-*.a
-*.so
-*.dylib
-*.dll
-*.exe
-*.out
-
-# Web related
-/build/web/
-/web/.dart_tool/
-/web/.packages
-
-# Mobile specific
-/ios/Pods/
-/ios/.symlinks/
-/android/.gradle/
-/android/local.properties
-*.apk
-*.aab
-*.ipa
-
-# Configuration backups
-/config/backup/
-/config/*.backup
-
-# Temporary user data
-/user-data/
-/user_preferences.json
-
-# Debug symbols
-*.pdb
-*.map
-
-# Localization temp files
-/l10n/arb/*.temp
-/l10n/generated/*.temp
-
-# Plugin specific temp
-/plugins/*/example/build/
-
-# Network cache
-/network_cache/
-/http_cache/
-
-# Font caching
-/fonts/.font-cache
-
-# Icon generation temp
-/assets/icons/.icon-temp
-
-# Code generation temp
-/lib/src/generated/.temp
-
-# State management temp
-/lib/state/.temp
-
-# Routing temp
-/lib/router/.temp
-
-# Theme temp
-/lib/theme/.temp
-
-# Widget temp
-/lib/widgets/.temp
-
-# Service temp
-/lib/services/.temp
-
-# Model temp
-/lib/models/.temp
-
-# Repository temp
-/lib/repositories/.temp
-
-# Bloc/Cubit temp
-/lib/blocs/.temp
-/lib/cubits/.temp
-
-# Utils temp
-/lib/utils/.temp
-
-# Constants temp
-/lib/constants/.temp
-
-# Assets temp
-/assets/.temp
-
-# Test temp
-/test/.dart_tool/
-/test/fixtures/.temp
-
-# Mock temp
-/test/mocks/.temp
-
-# Stub temp
-/test/stubs/.temp
-
-# Integration test temp
-/test_driver/.temp
-
-# Performance temp
-/performance/.temp
-
-# Benchmark temp
-/benchmark/.temp
-
-# Example temp
-/example/.temp
-
-# Demo temp
-/demo/.temp
-
-# Sample temp
-/sample/.temp
-
-# Template temp
-/templates/.temp
-
-# Script temp
-/scripts/.temp
-
-# Tool temp
-/tools/.temp
-
-# Dev temp
-/dev/.temp
-
-# Staging temp
-/staging/.temp
-
-# Production temp
-/prod/.temp
-
-# Release temp
-/release/.temp
-
-# Beta temp
-/beta/.temp
-
-# Alpha temp
-/alpha/.temp
-
-# Development temp
-/develop/.temp
-
-# Feature temp
-/features/.temp
-
-# Branch temp
-/branches/.temp
-
-# Tag temp
-/tags/.temp
-
-# Commit temp
-/commits/.temp
-
-# Diff temp
-/diffs/.temp
-
-# Patch temp
-/patches/.temp
-
-# Merge temp
-/merges/.temp
-
-# Rebase temp
-/rebases/.temp
-
-# Cherry-pick temp
-/cherry-picks/.temp
-
-# Stash temp
-/stashes/.temp
-
-# Reflog temp
-/reflogs/.temp
-
-# Graft temp
-/grafts/.temp
-
-# Shallow temp
-/shallow/.temp
-
-# Objects temp
-/objects/.temp
-
-# Refs temp
-/refs/.temp
-
-# HEAD temp
-/HEAD.temp
-
-# Index temp
-/index.temp
-
-# Config temp
-/config.temp
-
-# Description temp
-/description.temp
-
-# Hooks temp
-/hooks/.temp
-
-# Info temp
-/info/.temp
-
-# Logs temp
-/logs/.temp
-
-# Packed-refs temp
-/packed-refs.temp
-
-# Shallow temp
-/shallow.temp
-
-# Worktrees temp
-/worktrees/.temp
-
-# Common temp files in various directories
-**/.temp
-**/*.temp
-**/*.tmp
-**/*~
-```
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Claude Code - ignore user-specific settings only
+.claude/settings.local.json
+
+# Documentation (generated/planning artifacts)
+docs/
+
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+/android/**/.cxx
+/android/**/build
+/android/common/**/.**/
+/android/common/local.*
+/android/core/**/includes/
+/android/core/**/cmake-build-*/
+/android/core/**/jniLibs/
+
+#FlClash
+/libclash/
+/android/app/src/main/jniLibs/
+/services/helper/target
+/macos/**/Package.resolved
+/macos/build/
+/env.json
+/core_sha256.json
+/core/*.exe
+/plugins/rust_api/.claude/
+devtools_options.yaml
+
+# FVM Version Cache
+.fvm/
+.fvmrc

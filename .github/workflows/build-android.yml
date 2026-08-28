@@ -21,18 +21,22 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v5
         with:
-          go-version: '1.22'
+          go-version: '1.22' # 编译 mihomo 核心所需（go.mod 要求 >= 1.20）
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          cache: true
 
       - name: Setup NDK
+        id: setup-ndk
         uses: nttld/setup-ndk@v1
         with:
-          ndk-version: r27c
+          # android/gradle/libs.versions.toml 要求 ndkVersion 28.2.13676358，即 r28c，装错版本 AGP 会直接失败
+          ndk-version: r28c
           add-to-path: true
+          link-to-sdk: true # 链接进 Android SDK 目录，AGP 才能按 ndkVersion 找到它
 
       - name: Install Dependencies
         run: |
@@ -41,15 +45,20 @@ jobs:
           flutter --version
 
       - name: Build APK
+        env:
+          # plugins/setup/buildkit 的 build_tool 依赖该环境变量定位 NDK 交叉编译 Go 核心，
+          # nttld/setup-ndk 不会设置它，必须手动传递
+          ANDROID_NDK: ${{ steps.setup-ndk.outputs.ndk-path }}
         run: |
           # 运行官方构建脚本，它会自动处理 Go 核心编译和 Flutter 打包
-          dart setup.dart android
+          dart setup.dart android -v
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: FlClash-Android-APK
-          # flutter_distributor 通常输出到 dist 目录，备用路径也加上以防万一
+          # flutter_distributor 输出到 dist 目录，备用路径也加上以防万一
           path: |
             dist/*.apk
             build/app/outputs/flutter-apk/*.apk
+          if-no-files-found: error
